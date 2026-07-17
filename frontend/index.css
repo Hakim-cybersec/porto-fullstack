@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink text-paper font-body antialiased;
+  }
+  ::selection {
+    @apply bg-teal/30 text-paper;
+  }
+  :focus-visible {
+    outline: 2px solid #5fb8aa;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Blueprint corner-bracket frame, used on hero + signature cards */
+  .blueprint-frame {
+    position: relative;
+  }
+  .blueprint-frame::before,
+  .blueprint-frame::after,
+  .blueprint-frame > .corner-tl,
+  .blueprint-frame > .corner-br {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: #5fb8aa;
+  }
+  .blueprint-frame::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+  }
+  .blueprint-frame::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-teal;
+  }
+
+  .section-label {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-muted;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-teal text-ink font-body font-semibold px-5 py-3 rounded-sm hover:bg-amber transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 border border-ink-line text-paper font-body font-medium px-5 py-3 rounded-sm hover:border-teal hover:text-teal transition-colors duration-200;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
